@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anish Rimal | Portfolio</title>
+    <style>
+        /* --- Basic Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* --- Hero Section --- */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: #61dafb;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #bbb;
+        }
+
+        /* --- About Section --- */
+        section {
+            margin: 50px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+        }
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #61dafb;
+        }
+
+        section p {
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        /* --- Skills --- */
+        .skills {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .skill {
+            background-color: #2a2a2a;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .skill:hover {
+            transform: scale(1.1);
+            background-color: #61dafb;
+            color: #121212;
+        }
+
+        /* --- Contact --- */
+        .contact a {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 1em;
+        }
+
+        /* --- Smooth fade-in animation --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Hero Section -->
+        <header class="fade-in">
+            <h1>Anish Rimal</h1>
+            <p>Student | Anime & Tech Enthusiast</p>
+        </header>
+
+        <!-- About Section -->
+        <section class="fade-in">
+            <h2>About Me</h2>
+            <p>
+                I'm a Grade 12 science student from Vs Niketan College, Bhaktapur, originally from Dolakha. 
+                I enjoy playing games, watching anime, reading manga, and movies. This is my personal portfolio 
+                to showcase who I am and what I like.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="fade-in">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">C</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="fade-in contact">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:anishrimal2007@gmail.com">anishrimal2007@gmail.com</a></p>
+            <p>
+                Instagram: <a href="https://instagram.com/anish.void" target="_blank">@anish.void</a> |
+                GitHub: <a href="https://github.com/anishrimal-03" target="_blank">anishrimal-03</a>
+            </p>
+        </section>
+
+    </div>
+
+    <footer class="fade-in">
+        &copy; 2026 Anish Rimal. All rights reserved.
+    </footer>
+
+    <script>
+        // Simple fade-in on scroll effect
+        const fadeEls = document.querySelectorAll('.fade-in');
+        window.addEventListener('scroll', () => {
+            fadeEls.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    el.style.animation = 'fadeIn 1s forwards';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
