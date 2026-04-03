@@ -1,248 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anish Rimal | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    :root {
+      --primary: #00f0ff;
+      --accent: #a855f7;
+    }
+    
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
     }
-
+    
     body {
-      background: #0f172a;
-      color: white;
+      font-family: 'Inter', system_ui, sans-serif;
     }
-
-    nav {
+    
+    .glass {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(20px);
+    }
+    
+    .neon-text {
+      text-shadow: 
+        0 0 10px var(--primary),
+        0 0 20px var(--primary);
+    }
+    
+    .hero-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1133 100%);
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 50px -12px rgb(0 240 255 / 0.25);
+    }
+    
+    .profile-glow {
+      animation: profilePulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes profilePulse {
+      0%, 100% { box-shadow: 0 0 25px -5px rgb(0 240 255); }
+      50% { box-shadow: 0 0 60px 15px rgb(168 85 247); }
+    }
+    
+    .scroll-progress {
       position: fixed;
       top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      padding: 12px;
-      text-align: center;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    header {
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                  url('anish.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #d1d5db;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      background: #38bdf8;
-      color: black;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0ea5e9;
-    }
-
-    section {
-      padding: 70px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #38bdf8;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .socials a {
-      display: inline-block;
-      margin: 10px;
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    .socials a:hover {
-      text-decoration: underline;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      z-index: 50;
     }
   </style>
 </head>
+<body class="bg-[#0a0a0a] text-slate-200 overflow-x-hidden">
+  
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress" class="scroll-progress w-0"></div>
 
-<body>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<header>
-  <div>
-    <h1>Anish Rimal</h1>
-    <p>Student | Aspiring Web Developer</p>
-    <button onclick="scrollToSection()">Explore More</button>
-  </div>
-</header>
-
-<section id="about">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>
-      Hello! My name is Anish Rimal, and I am a student with a strong interest in technology and programming.
-      I enjoy spending my time gaming, watching anime, and reading manga.  
-      Currently, I am learning web development and improving my skills in coding to build creative and useful projects.
-    </p>
-  </div>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="card">
-    <p>• HTML (Basic)</p>
-    <p>• CSS (Basic)</p>
-    <p>• JavaScript (Basic)</p>
-    <p>• C Programming</p>
-  </div>
-</section>
-
-<section>
-  <h2>Hobbies & Interests</h2>
-  <div class="card">
-    <p>🎮 Gaming</p>
-    <p>📺 Watching Anime</p>
-    <p>📚 Reading Manga</p>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p>Email: anishrimal2007@gmail.com</p>
-
-    <div class="socials">
-      <a href="https://instagram.com/anish.void" target="_blank">Instagram</a>
-      <a href="https://github.com/anishrimal-03" target="_blank">GitHub</a>
-      <a href="#">Facebook (Anish Rimal)</a>
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-gradient-to-br from-[#00f0ff] to-[#a855f7] rounded-2xl flex items-center justify-center text-white font-bold text-xl">A</div>
+        <h1 class="text-2xl font-semibold tracking-tight">Anish.</h1>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#home" onclick="navigateTo('home')" class="nav-link hover:text-[#00f0ff] flex items-center gap-1 active">
+          <span>Home</span>
+        </a>
+        <a href="#about" onclick="navigateTo('about')" class="nav-link hover:text-[#00f0ff]">About</a>
+        <a href="#skills" onclick="navigateTo('skills')" class="nav-link hover:text-[#00f0ff]">Skills</a>
+        <a href="#achievements" onclick="navigateTo('achievements')" class="nav-link hover:text-[#00f0ff]">Achievements</a>
+        <a href="#interests" onclick="navigateTo('interests')" class="nav-link hover:text-[#00f0ff]">Interests</a>
+        <a href="#contact" onclick="navigateTo('contact')" class="nav-link hover:text-[#00f0ff]">Contact</a>
+      </div>
+      
+      <a href="#contact" 
+         class="px-6 py-3 bg-gradient-to-r from-[#00f0ff] to-[#a855f7] text-white font-semibold rounded-3xl flex items-center gap-2 hover:scale-105">
+        Let's Talk
+        <span class="text-xl">→</span>
+      </a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<script>
-  function scrollToSection() {
-    document.getElementById("about").scrollIntoView({
-      behavior: "smooth"
-    });
-  }
-</script>
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left: Profile Image -->
+      <div class="md:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#00f0ff] to-[#a855f7] rounded-3xl blur-3xl opacity-30 scale-110"></div>
+          <img src="anish.jpg" 
+               alt="Anish Rimal"
+               class="profile-glow w-80 h-80 object-cover rounded-3xl border-4 border-[#00f0ff] shadow-2xl mx-auto">
+        </div>
+      </div>
+      
+      <!-- Center: Text -->
+      <div class="md:col-span-5 text-center md:text-left" data-aos="fade-up" data-aos-duration="800">
+        <div class="inline-flex items-center gap-2 bg-white/10 text-white text-sm font-medium px-5 py-2 rounded-3xl mb-6">
+          <div class="w-2 h-2 bg-[#00f0ff] rounded-full animate-pulse"></div>
+          Class 12 • Kathmandu
+        </div>
+        
+        <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter mb-4">
+          I'm <span class="text-[#00f0ff] neon-text">Anish</span><br>Rimal
+        </h1>
+        
+        <p class="text-2xl text-slate-300 mb-6">A student exploring the world of code</p>
+        
+        <p class="max-w-md mx-auto md:mx-0 text-lg text-slate-400">
+          Currently in Class 12 at Vs Niketan College, Kathmandu.<br>
+          Learning web development • Gaming • Anime & Manga lover
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
+          <a href="#contact" 
+             onclick="navigateTo('contact')"
+             class="px-8 py-4 bg-gradient-to-r from-[#00f0ff] to-[#a855f7] text-white font-semibold text-lg rounded-3xl flex items-center justify-center gap-3 hover:shadow-xl hover:shadow-[#00f0ff]/50">
+            Let's Connect
+            <span class="text-2xl">✦</span>
+          </a>
+          
+          <a href="#about" 
+             onclick="navigateTo('about')"
+             class="px-8 py-4 border-2 border-[#00f0ff] text-[#00f0ff] font-semibold text-lg rounded-3xl hover:bg-white/10">
+            More About Me
+          </a>
+        </div>
+      </div>
+      
+      <!-- Right: Code Icon -->
+      <div class="md:col-span-2 hidden lg:flex flex-col items-center justify-center gap-6" data-aos="fade-left">
+        <div class="w-40 h-40 bg-gradient-to-br from-slate-900 to-[#1e1133] rounded-3xl flex items-center justify-center border border-[#00f0ff]/30 text-8xl text-[#00f0ff] shadow-2xl neon-text">
+          &lt;/&gt;
+        </div>
+        <p class="text-xs uppercase tracking-[4px] text-slate-500 text-center">Currently coding in the mountains</p>
+      </div>
+    </div>
+  </section>
 
-</body>
-</html>
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-
-        <!-- Hero Section -->
-        <header class="fade-in">
-            <h1>Anish Rimal</h1>
-            <p>Student | Anime & Tech Enthusiast</p>
-        </header>
-
-        <!-- About Section -->
-        <section class="fade-in">
-            <h2>About Me</h2>
-            <p>
-                I'm a Grade 12 science student from Vs Niketan College, Bhaktapur, originally from Dolakha. 
-                I enjoy playing games, watching anime, reading manga, and movies. This is my personal portfolio 
-                to showcase who I am and what I like.
-            </p>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="fade-in">
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">C</div>
+  <!-- ABOUT -->
+  <section id="about" class="py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="px-6 py-2 bg-white/10 text-[#00f0ff] text-sm rounded-full">CHAPTER 01</span>
+        <h2 class="text-5xl font-bold mt-4">About Me</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-12 gap-10 max-w-5xl mx-auto">
+        <div class="md:col-span-7 glass rounded-3xl p-10 border border-white/10" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-xl leading-relaxed">
+            I'm Anish Rimal, a Class 12 student at Vs Niketan College, Kathmandu. 
+            Originally from Dolakha, Nepal. Passionate about programming, web development, 
+            and turning ideas into beautiful digital experiences.
+          </p>
+          <br>
+          <p class="text-xl leading-relaxed">
+            When I'm not studying or coding, you'll find me gaming with friends, 
+            binge-watching anime, or lost in the world of manga.
+          </p>
+          
+          <div class="mt-12 grid grid-cols-2 gap-6">
+            <div class="glass rounded-2xl p-6 border border-white/10">
+              <div class="flex items-center gap-3 text-[#00f0ff] mb-3">
+                <span class="text-3xl">🎓</span>
+                <span class="font-semibold">Education</span>
+              </div>
+              <p class="font-medium">Class 12</p>
+              <p class="text-slate-400">Vs Niketan College, Kathmandu</p>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="fade-in contact">
-            <h2>Contact Me</h2>
-            <p>Email: <a href="mailto:anishrimal2007@gmail.com">anishrimal2007@gmail.com</a></p>
-            <p>
-                Instagram: <a href="https://instagram.com/anish.void" target="_blank">@anish.void</a> |
-                GitHub: <a href="https://github.com/anishrimal-03" target="_blank">anishrimal-03</a>
-            </p>
-        </section>
-
+            
+            <div class="glass rounded-2xl p-6 border border-white/10">
+              <div class="flex items-center gap-3 text-[#00f0ff] mb-3">
+                <span class="text-3xl">🏔️</span>
+                <span class="font-semibold">Hometown</span>
+              </div>
+              <p class="font-medium">Dolakha, Nepal</p>
+              <p class="text-slate-400">Where the mountains inspire me</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:col-span-5 flex items-center" data-aos="fade-left" data-aos-delay="300">
+          <div class="space-y-6 text-slate-300">
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 flex-shrink-0 bg-[#00f0ff]/10 text-[#00f0ff] rounded-2xl flex items-center justify-center text-3xl">💻</div>
+              <div>
+                <h4 class="font-semibold text-xl">Web Development</h4>
+                <p class="text-slate-400">Building modern, responsive websites with passion</p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 flex-shrink-0 bg-[#a855f7]/10 text-[#a855f7] rounded-2xl flex items-center justify-center text-3xl">🎮</div>
+              <div>
+                <h4 class="font-semibold text-xl">Gaming</h4>
+                <p class="text-slate-400">Competitive online gaming is my stress reliever</p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 flex-shrink-0 bg-[#00f0ff]/10 text-[#00f0ff] rounded-2xl flex items-center justify-center text-3xl">📺</div>
+              <div>
+                <h4 class="font-semibold text-xl">Anime &amp; Manga</h4>
+                <p class="text-slate-400">My escape to different worlds</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <footer class="fade-in">
-        &copy; 2026 Anish Rimal. All rights reserved.
-    </footer>
+  <!-- SKILLS -->
+  <section id="skills" class="py-24 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="px-6 py-2 bg-white/10 text-[#00f0ff] text-sm rounded-full">CHAPTER 02</span>
+        <h2 class="text-5xl font-bold mt-4">Skills I'm Mastering</h2>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="glass card-hover rounded-3xl p-8 text-center border border-white/10" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-7xl mb-6 text-[#00f0ff]">&lt;/&gt;</div>
+          <h3 class="text-2xl font-semibold mb-1">JavaScript</h3>
+          <p class="text-slate-400">Building interactive web apps</p>
+        </div>
+        
+        <div class="glass card-hover rounded-3xl p-8 text-center border border-white/10" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-7xl mb-6">C</div>
+          <h3 class="text-2xl font-semibold mb-1">C Programming</h3>
+          <p class="text-slate-400">Learning the fundamentals</p>
+        </div>
+        
+        <div class="glass card-hover rounded-3xl p-8 text-center border border-white/10" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-7xl mb-6 text-[#e34f26]">🌐</div>
+          <h3 class="text-2xl font-semibold mb-1">HTML5</h3>
+          <p class="text-slate-400">Semantic &amp; modern markup</p>
+        </div>
+        
+        <div class="glass card-hover rounded-3xl p-8 text-center border border-white/10" data-aos="fade-up" data-aos-delay="400">
+          <div class="text-7xl mb-6 text-[#1572b6]">&lt;/&gt;</div>
+          <h3 class="text-2xl font-semibold mb-1">CSS3</h3>
+          <p class="text-slate-400">Stunning animations &amp; designs</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Simple fade-in on scroll effect
-        const fadeEls = document.querySelectorAll('.fade-in');
-        window.addEventListener('scroll', () => {
-            fadeEls.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 50) {
-                    el.style.animation = 'fadeIn 1s forwards';
-                }
-            });
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="px-6 py-2 bg-white/10 text-[#00f0ff] text-sm rounded-full">CHAPTER 03</span>
+        <h2 class="text-5xl font-bold mt-4">Achievements</h2>
+      </div>
+      
+      <div class="max-w-2xl mx-auto glass rounded-3xl p-12 border border-white/10 text-center" data-aos="zoom-in">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#00f0ff] to-[#a855f7] rounded-2xl text-white text-5xl mb-6">🏆</div>
+        <h3 class="text-4xl font-bold text-[#00f0ff] mb-2">3.64 GPA</h3>
+        <p class="text-2xl font-medium">Grade 10 Results</p>
+        <p class="mt-6 text-slate-300 max-w-md mx-auto">
+          Successfully completed Grade 10 with strong academic performance, 
+          showing dedication and consistency in studies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESTS & HOBBIES -->
+  <section id="interests" class="py-24 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="px-6 py-2 bg-white/10 text-[#00f0ff] text-sm rounded-full">CHAPTER 04</span>
+        <h2 class="text-5xl font-bold mt-4">Interests &amp; Hobbies</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="glass card-hover rounded-3xl p-10 text-center border border-white/10" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-7xl mb-6">🎮</div>
+          <h3 class="text-3xl font-semibold">Gaming</h3>
+          <p class="text-slate-400 mt-4">Passionate about online multiplayer games</p>
+        </div>
+        <div class="glass card-hover rounded-3xl p-10 text-center border border-white/10" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-7xl mb-6">📺</div>
+          <h3 class="text-3xl font-semibold">Anime</h3>
+          <p class="text-slate-400 mt-4">Anime enthusiast — always watching the latest drops</p>
+        </div>
+        <div class="glass card-hover rounded-3xl p-10 text-center border border-white/10" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-7xl mb-6">📖</div>
+          <h3 class="text-3xl font-semibold">Manga</h3>
+          <p class="text-slate-400 mt-4">Love reading manga in my free time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="px-6 py-2 bg-white/10 text-[#00f0ff] text-sm rounded-full">CHAPTER 05</span>
+        <h2 class="text-5xl font-bold mt-4">Get in Touch</h2>
+        <p class="text-slate-400 mt-4 text-xl">Feel free to reach out for collaborations or just a friendly chat</p>
+      </div>
+      
+      <div class="grid md:grid-cols-12 gap-12 max-w-6xl mx-auto">
+        <!-- Contact Info -->
+        <div class="md:col-span-5 glass rounded-3xl p-10 border border-white/10" data-aos="fade-right">
+          <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+            <span>Contact Information</span>
+          </h3>
+          
+          <div class="space-y-8">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-[#00f0ff]/10 rounded-2xl flex items-center justify-center text-3xl">✉️</div>
+              <div>
+                <p class="text-sm text-slate-400">EMAIL</p>
+                <a href="mailto:anishrimal2007@gmail.com" class="text-lg hover:text-[#00f0ff]">anishrimal2007@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-[#00f0ff]/10 rounded-2xl flex items-center justify-center text-3xl">📱</div>
+              <div>
+                <p class="text-sm text-slate-400">PHONE</p>
+                <a href="tel:9769779262" class="text-lg hover:text-[#00f0ff]">976-9779262</a>
+              </div>
+            </div>
+            
+            <div>
+              <p class="text-sm text-slate-400 mb-4">CONNECT WITH ME</p>
+              <div class="flex gap-6 text-2xl">
+                <a href="https://github.com/anish-np" target="_blank" class="hover:text-[#00f0ff]">🐙</a>
+                <a href="https://instagram.com/anish.void" target="_blank" class="hover:text-[#00f0ff]">📸</a>
+                <a href="#" target="_blank" class="hover:text-[#00f0ff]">𝕏</a>
+                <a href="#" target="_blank" class="hover:text-[#00f0ff]">📘</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="md:col-span-7 glass rounded-3xl p-10 border border-white/10" data-aos="fade-left">
+          <form id="contactForm" class="space-y-6">
+            <div>
+              <input type="text" id="name" placeholder="Your name" 
+                     class="w-full bg-white/10 border border-white/20 focus:border-[#00f0ff] rounded-3xl px-7 py-5 outline-none text-lg">
+            </div>
+            <div>
+              <input type="email" id="email" placeholder="your.email@example.com" 
+                     class="w-full bg-white/10 border border-white/20 focus:border-[#00f0ff] rounded-3xl px-7 py-5 outline-none text-lg">
+            </div>
+            <div>
+              <textarea id="message" rows="6" placeholder="Your message..." 
+                        class="w-full bg-white/10 border border-white/20 focus:border-[#00f0ff] rounded-3xl px-7 py-5 outline-none text-lg resize-none"></textarea>
+            </div>
+            
+            <button type="submit"
+                    class="w-full py-6 bg-gradient-to-r from-[#00f0ff] to-[#a855f7] text-white text-xl font-semibold rounded-3xl hover:shadow-2xl hover:shadow-[#00f0ff]/40">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 text-center text-slate-400 text-sm">
+      © 2026 Anish Rimal • Built with passion and code in the mountains of Nepal<br>
+      <span class="text-[#00f0ff]">Made with ❤️ using Tailwind + AOS</span>
+    </div>
+  </footer>
+
+  <script>
+    // Tailwind script initialization
+    function initializeTailwind() {
+      return {
+        config(userConfig = {}) {
+          return {
+            content: [],
+            theme: {
+              extend: {}
+            },
+            plugins: [],
+            ...userConfig,
+          }
+        },
+        theme: {
+          extend: {},
+        },
+      }
+    }
+    
+    // AOS Initialization + Scroll animations
+    function initializeAnimations() {
+      AOS.init({
+        duration: 900,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+      });
+      
+      // Scroll progress bar
+      const progressBar = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = scrollTop / docHeight * 100;
+        progressBar.style.width = `${scrollPercent}%`;
+      });
+    }
+    
+    // Smooth navigation
+    function navigateTo(section) {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
-    </script>
+      }
+    }
+    
+    // Contact form handling
+    function handleForm() {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        
+        // Demo success animation
+        const btn = this.querySelector('button');
+        const originalText = btn.innerHTML;
+        
+        btn.innerHTML = `
+          <span class="inline-flex items-center gap-2">
+            <span class="animate-spin h-5 w-5 border-2 border-white border-r-transparent rounded-full"></span>
+            Sending...
+          </span>
+        `;
+        btn.disabled = true;
+        
+        setTimeout(() => {
+          btn.classList.add('!bg-emerald-500');
+          btn.innerHTML = `✅ Message sent, ${name}!`;
+          
+          setTimeout(() => {
+            alert(`Thank you ${name}! Your message has been received. I'll reply soon. 🚀`);
+            form.reset();
+            btn.classList.remove('!bg-emerald-500');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 1500);
+        }, 1800);
+      });
+    }
+    
+    // Main initialization
+    window.onload = function() {
+      initializeTailwind();
+      initializeAnimations();
+      handleForm();
+      
+      console.log('%c✅ Anish Rimal Portfolio loaded with beautiful scroll animations!', 'color:#00f0ff; font-size:13px');
+    };
+  </script>
 </body>
 </html>
