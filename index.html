@@ -1,113 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anish Rimal | Portfolio</title>
-    <style>
-        /* --- Basic Reset --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <title>Anish Rimal | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        a {
-            color: #61dafb;
-            text-decoration: none;
-        }
+    body {
+      background: #0f172a;
+      color: white;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 12px;
+      text-align: center;
+      z-index: 1000;
+    }
 
-        /* --- Container --- */
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        /* --- Hero Section --- */
-        header {
-            text-align: center;
-            padding: 50px 20px;
-        }
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                  url('anish.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-        header h1 {
-            font-size: 3em;
-            color: #61dafb;
-            margin-bottom: 10px;
-        }
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
 
-        header p {
-            font-size: 1.2em;
-            color: #bbb;
-        }
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #d1d5db;
+    }
 
-        /* --- About Section --- */
-        section {
-            margin: 50px 0;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #1e1e1e;
-        }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #38bdf8;
+      color: black;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #61dafb;
-        }
+    button:hover {
+      background: #0ea5e9;
+    }
 
-        section p {
-            font-size: 1.1em;
-            color: #ccc;
-        }
+    section {
+      padding: 70px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-        /* --- Skills --- */
-        .skills {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
+    h2 {
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
 
-        .skill {
-            background-color: #2a2a2a;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            color: #fff;
-            transition: transform 0.3s;
-        }
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
 
-        .skill:hover {
-            transform: scale(1.1);
-            background-color: #61dafb;
-            color: #121212;
-        }
+    .socials a {
+      display: inline-block;
+      margin: 10px;
+      color: #38bdf8;
+      text-decoration: none;
+    }
 
-        /* --- Contact --- */
-        .contact a {
-            display: inline-block;
-            margin-right: 20px;
-            font-size: 1em;
-        }
+    .socials a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 
-        /* --- Smooth fade-in animation --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s forwards;
-        }
+<body>
 
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header>
+  <div>
+    <h1>Anish Rimal</h1>
+    <p>Student | Aspiring Web Developer</p>
+    <button onclick="scrollToSection()">Explore More</button>
+  </div>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      Hello! My name is Anish Rimal, and I am a student with a strong interest in technology and programming.
+      I enjoy spending my time gaming, watching anime, and reading manga.  
+      Currently, I am learning web development and improving my skills in coding to build creative and useful projects.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="card">
+    <p>• HTML (Basic)</p>
+    <p>• CSS (Basic)</p>
+    <p>• JavaScript (Basic)</p>
+    <p>• C Programming</p>
+  </div>
+</section>
+
+<section>
+  <h2>Hobbies & Interests</h2>
+  <div class="card">
+    <p>🎮 Gaming</p>
+    <p>📺 Watching Anime</p>
+    <p>📚 Reading Manga</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: anishrimal2007@gmail.com</p>
+
+    <div class="socials">
+      <a href="https://instagram.com/anish.void" target="_blank">Instagram</a>
+      <a href="https://github.com/anishrimal-03" target="_blank">GitHub</a>
+      <a href="#">Facebook (Anish Rimal)</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function scrollToSection() {
+    document.getElementById("about").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+</script>
+
+</body>
+</html>
         @keyframes fadeIn {
             to {
                 opacity: 1;
